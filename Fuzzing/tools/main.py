@@ -9,25 +9,25 @@ from mods import apch
 from mods import errorsing
 from mods import bup
 from mods import gitexp
-def main(url,urlht,ver):
 
+
+def main(url, urlht, ver):
     time1 = time.time()
     header = {"User-Agent": "Venera/1.0"}
 
-    print("""\033[1;33mTarget\033[0;0m: {} - {}""".format(url,urlht))
-    chckurl.check(urlht,header)
-    chckwaf.checkwaf(urlht,header)
-    multi_index.multi_index(url,header)
-    errorsing.errorsig(url,header)
-    hdrchck.header(urlht,header)
+    print("""\033[1;33mTarget\033[0;0m: {} - {}""".format(url, urlht))
+    chckurl.check(urlht, header)
+    chckwaf.checkwaf(urlht, header)
+    multi_index.multi_index(url, header)
+    errorsing.errorsig(url, header)
+    hdrchck.header(urlht, header)
 
     wp.wp(urlht, header)
 
-    dnsfuzz.dnsfuzz(url,header)
-    apch.apache_(urlht,header)
-    bup.backup(url,header)
-    gitexp.git_exposed(url,header)
-
+    dnsfuzz.dnsfuzz(url, header)
+    apch.apache_(urlht, header)
+    bup.backup(url, header)
+    gitexp.git_exposed(url, header)
 
     time2 = time.time()
     time0 = time2 - time1

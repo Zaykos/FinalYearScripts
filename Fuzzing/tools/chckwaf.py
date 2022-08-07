@@ -1,14 +1,15 @@
 import requests
 
-def checkwaf(urlht,header):
+
+def checkwaf(urlht, header):
     def _exit():
         print("1")
         exit("[\033[1;33m!\033[0;0m] - Quitting")
 
     print("\nTest WAF:")
-    r = requests.get(urlht,headers=header)
+    r = requests.get(urlht, headers=header)
 
-    opt = ["Yes","yes","Y","y"]
+    opt = ["Yes", "yes", "Y", "y"]
     try:
         if r.headers["server"] == "cloudflare":
             print("[\033[1;31m!\033[0;0m]The Server is Behind a CloudFlare Server.")
@@ -22,7 +23,7 @@ def checkwaf(urlht,header):
 
     noise = "?=<script>alert()</script>"
     fuzz = urlht + noise
-    waffd = requests.get(fuzz,headers=header)
+    waffd = requests.get(fuzz, headers=header)
     if waffd.status_code == 406 or waffd.status_code == 501:
         print("[\033[1;31m!\033[0;0m] WAF Detected.")
     if waffd.status_code == 999:

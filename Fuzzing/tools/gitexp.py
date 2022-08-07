@@ -1,19 +1,20 @@
 # source code disclosure through exposed .git folder
-from mods import requester
+from mods import requestUtils
+
 
 def git_exposed(url, header):
     founds = []
-    path = [".git",".git/",".gitignore",".git/logs/",".git/HEAD",".git/logs/HEAD",".git/index",".git/config"]
+    path = [".git", ".git/", ".gitignore", ".git/logs/", ".git/HEAD", ".git/logs/HEAD", ".git/index", ".git/config"]
 
     for i in path:
         urlht = url + "/" + i
 
         try:
-            req = requester.req_code(urlht, header)
+            req = requestUtils.request_code(urlht, header)
             print(req)
 
             if req != 404:
-                ff = "> "+ urlht + " " + req
+                ff = "> " + urlht + " " + req
                 founds.append(ff)
         except:
             pass

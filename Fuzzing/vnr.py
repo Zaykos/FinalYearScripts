@@ -1,7 +1,7 @@
 #! /usr/bin/python3
 # main function
 import sys
-from mods import main
+from tools import main
 
 ver = "1.0"  # &
 

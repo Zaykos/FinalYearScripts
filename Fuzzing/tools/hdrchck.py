@@ -1,9 +1,10 @@
-#Check Headers
+# Check Headers
 import socket
 import requests
 
-def header(urlht,header):
-    h = requests.get(urlht,headers=header)
+
+def header(urlht, header):
+    h = requests.get(urlht, headers=header)
 
     urlsplit = urlht.split("/")
     try:
@@ -15,7 +16,7 @@ def header(urlht,header):
         client.settimeout(0.5)
 
         print("\nProtocols:")
-        print("IP: ",ip)
+        print("IP: ", ip)
         code = client.connect_ex((ip, 80))
         if code == 0:
             print("[\033[1;34mInfo\033[0;0m] 80 HTTP Opened.")
@@ -95,6 +96,7 @@ def header(urlht,header):
                     print("RFC:", coo.rfc2109)
         except:
             pass
+
     req = requests.get(urlht, headers=header)
     headers = req.headers
     ucm(headers)

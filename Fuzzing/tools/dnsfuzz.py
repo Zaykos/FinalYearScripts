@@ -1,13 +1,14 @@
-from mods import requester
+from mods import requestUtils
+
 
 def dnsfuzz(url, header):
     listt = []
-    arq = open("mods/db/dnsfuzz.txt").read()
+    arq = open("tools/dictionaryLists/fuzzingList.txt").read()
     arq = arq.splitlines()
     for i in arq:
         try:
-            urlht = "http://"+i+"."+url
-            rc = requester.req_code(urlht,header)
+            urlht = "http://" + i + "." + url
+            rc = requestUtils.request_code(urlht, header)
             if rc == 200:
                 listt.append(i)
             if rc == 300:
@@ -27,5 +28,3 @@ def dnsfuzz(url, header):
         print("DNS FUZZ:")
         for item in listt:
             print(item)
-
-

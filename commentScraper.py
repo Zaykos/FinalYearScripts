@@ -7,7 +7,7 @@ headers = {'User-Agent': user_agent}
 
 
 def usage():
-    print("Usage: ./comment_scrape.py URL\n")
+    print("Usage: ./commentScraper.py URL\n")
 
 
 if len(sys.argv) < 2:
