@@ -1,5 +1,5 @@
 import requestUtils
-import phpinfo
+import fuzzingPHPInfo
 
 
 def multi_index(url, header):
