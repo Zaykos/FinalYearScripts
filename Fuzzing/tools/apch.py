@@ -27,7 +27,7 @@ def apache_user_enum(url, header):
           "~database"]
     for i in l2:
         urlht = url + "/" + i
-        uf = requester.req_code(urlht, header)
+        uf = requestUtils.request_code(urlht, header)
         if uf == 200:
             ufounds.append(urlht)
         if uf == 302:
