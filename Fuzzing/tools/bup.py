@@ -1,4 +1,4 @@
-from mods import requestUtils
+import requestUtils
 
 
 def backup(url, header):

@@ -1,24 +1,22 @@
-from mods import requestUtils
+import requestUtils
+import json
 
 
-def phpinfo(url, header):
-    founds = []
-    path = ['phpinfo.php', 'PhpInfo.php', 'PHPinfo.php', 'PHPINFO.php', 'phpInfo.php', 'info.php', 'Info.php',
-            'INFO.php',
-            'test.php?mode=phpinfo', 'index.php?view=phpinfo', 'index.php?mode=phpinfo', 'TEST.php?mode=phpinfo',
-            '?mode=phpinfo', '?view=phpinfo', 'install.php?mode=phpinfo', 'INSTALL.php?mode=phpinfo', 'phpversion.php',
-            'admin.php?mode=phpinfo', 'phpVersion.php', 'test1.php', 'test.php', 'test2.php', 'phpinfo1.php',
-            'info1.php',
-            'phpInfo1.php', 'PHPversion.php', 'x.php', 'xx.php', 'xxx.php']
+def fuzzing_php_info(target_url, header):
+    with open('dictionaryLists/phpList.json', 'r') as php_list_file:
+        file_data = json.load(php_list_file)
 
-    for i in path:
-        urlht = "http://" + url + "/" + i
-        get = requestUtils.request_code(urlht, header)
-        if get == 200:
-            founds.append(i)
+    php_fuzzing_paths = file_data.phpInfoList.list
+    found_paths = []
+
+    for i in php_fuzzing_paths:
+        new_url = "http://" + target_url + "/" + i
+        response_code = requestUtils.request_code(new_url, header)
+        if response_code == 200:
+            found_paths.append(i)
         else:
             pass
-    if len(founds) >= 1:
-        print("[\033[1;33m!\033[0;0m] - PHInfo!")
-        for t in founds:
+    if len(found_paths) >= 1:
+        print("We found a PHPInfo !")
+        for t in found_paths:
             print("-> ", t)

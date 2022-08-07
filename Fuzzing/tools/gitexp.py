@@ -1,5 +1,5 @@
 # source code disclosure through exposed .git folder
-from mods import requestUtils
+import requestUtils
 
 
 def git_exposed(url, header):

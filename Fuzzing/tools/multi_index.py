@@ -1,5 +1,5 @@
-from mods import requestUtils
-from mods import phpinfo
+import requestUtils
+import phpinfo
 
 
 def multi_index(url, header):
