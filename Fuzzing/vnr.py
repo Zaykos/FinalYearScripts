@@ -1,19 +1,20 @@
 #! /usr/bin/python3
-#main function
-
-ver = "1.0"#&
-
+# main function
 import sys
 from mods import main
 
+ver = "1.0"  # &
+
 try:
     url = sys.argv[1]
-    urlht = "http://"+url
+    urlht = "http://" + url
 except:
     exit()
 
-def _main(url,urlht,ver):
-    main.main(url,urlht,ver)
+
+def _main(url, urlht, ver):
+    main.main(url, urlht, ver)
+
 
 if __name__ == '__main__':
-    _main(url,urlht,ver)
+    _main(url, urlht, ver)
